@@ -1,0 +1,5 @@
+# Git ignore for Splunk SOC Home Lab repo
+*.tmp
+*.log
+.DS_Store
+Thumbs.db

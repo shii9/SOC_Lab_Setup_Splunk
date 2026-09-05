@@ -1,0 +1,26 @@
+# Targeted Security Audit Rules for Kali Linux
+# Location: /etc/audit/rules.d/splunk_soc.rules
+
+# Remove all existing rules
+-D
+
+# Buffer Size
+-b 8192
+
+# Account database changes
+-w /etc/passwd -p wa -k account_changes
+-w /etc/shadow -p wa -k account_changes
+-w /etc/group -p wa -k account_changes
+-w /etc/gshadow -p wa -k account_changes
+
+# Privilege configuration
+-w /etc/sudoers -p wa -k sudo_changes
+-w /etc/sudoers.d/ -p wa -k sudo_changes
+
+# SSH and persistence configuration
+-w /etc/ssh/sshd_config -p wa -k ssh_config_changes
+-w /etc/crontab -p wa -k cron_changes
+-w /etc/cron.d/ -p wa -k cron_changes
+
+# Lab user directory file-change monitoring
+-w /home/sh-kali/Desktop/ -p wa -k user_file_changes
