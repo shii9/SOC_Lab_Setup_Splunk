@@ -23,28 +23,6 @@ Below is a live search snapshot from the Splunk Enterprise Web interface (`index
 
 ---
 
-## 📋 Table of Contents
-
-- [🛡️ Splunk SOC Home Lab: Centralized Windows \& Linux Security Monitoring](#️-splunk-soc-home-lab-centralized-windows--linux-security-monitoring)
-  - [📸 Executive Summary \& Visual Workflow](#-executive-summary--visual-workflow)
-    - [📊 Live Splunk Ingestion Proof](#-live-splunk-ingestion-proof)
-  - [📋 Table of Contents](#-table-of-contents)
-  - [🎯 Objectives \& Project Scope](#-objectives--project-scope)
-  - [🏗️ Lab Architecture \& Data Flow](#️-lab-architecture--data-flow)
-    - [Mermaid Interactive Topology](#mermaid-interactive-topology)
-  - [🌐 Network \& Service Port Matrix](#-network--service-port-matrix)
-  - [🗂️ Index \& Telemetry Mapping](#️-index--telemetry-mapping)
-  - [⚙️ Setup \& Implementation Guide](#️-setup--implementation-guide)
-    - [Phase 1: Windows 11 Splunk Receiver Setup](#phase-1-windows-11-splunk-receiver-setup)
-    - [Phase 2: Windows 11 Local Log Collection](#phase-2-windows-11-local-log-collection)
-    - [Phase 3: Windows 10 VM Universal Forwarder Setup](#phase-3-windows-10-vm-universal-forwarder-setup)
-    - [Phase 4: Kali Linux VM Universal Forwarder \& Audit Tuning](#phase-4-kali-linux-vm-universal-forwarder--audit-tuning)
-  - [🔍 Verification \& SPL Search Queries](#-verification--spl-search-queries)
-  - [🔒 Security \& Operational Best Practices](#-security--operational-best-practices)
-  - [🚀 Future Enhancements \& Roadmap](#-future-enhancements--roadmap)
-
----
-
 ## 🎯 Objectives & Project Scope
 
 - **Centralized SIEM Deployment**: Establish a single-instance Splunk Enterprise 10.4.2 server combining Indexer and Search Head capabilities on a Windows 11 host.
@@ -97,18 +75,6 @@ flowchart TD
 
     SH --> SOC
 ```
-
----
-
-## 🌐 Network & Service Port Matrix
-
-| Machine / System | Role | IP Address | Port | Protocol | Purpose / Description |
-| :--- | :--- | :---: | :---: | :---: | :--- |
-| **Windows 11 Host** | Web User Interface | `<Splunk_Server_IP>` | `8000` | TCP | Analyst Web GUI (`http://<Splunk_Server_IP>:8000`) |
-| **Windows 11 Host** | Management Service | `<Splunk_Server_IP>` | `8089` | TCP | Splunk REST API & Administrative Service |
-| **Windows 11 Host** | Ingestion Listener | `<Splunk_Server_IP>` | `9997` | TCP | Splunk-to-Splunk Universal Forwarder Receiver |
-| **Windows 10 VM** | Monitored Windows Endpoint | Dynamic / DHCP | - | - | Ships Security, System, PowerShell & Defender Logs |
-| **Kali Linux VM** | Monitored Linux Endpoint | `192.168.X.X/24` | - | - | Ships `auth.log`, `auditd`, `kern.log` & package logs |
 
 ---
 
